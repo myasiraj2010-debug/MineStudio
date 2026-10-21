@@ -1,0 +1,5 @@
+import { useRef } from 'react';
+import { Music2 } from 'lucide-react';
+import { toast } from 'sonner';
+import { useStudio } from '@/hooks/useStudio';
+export default function AudioImport(){const input=useRef<HTMLInputElement>(null);const {addAudio,time}=useStudio();const load=(file:File)=>{const url=URL.createObjectURL(file);const player=new Audio(url);player.onloadedmetadata=()=>{addAudio({id:crypto.randomUUID(),name:file.name,url,duration:player.duration,start:time});player.onloadedmetadata=null;};player.onerror=()=>{URL.revokeObjectURL(url);toast.error('Audio could not be read. Use MP3, WAV, or OGG.');};};return <><button onClick={()=>input.current?.click()} className="tool-button px-2 text-[11px]" title="Import MP3, WAV, or OGG"><Music2 size={14}/><span className="desktop-detail">Add audio</span></button><input ref={input} type="file" accept="audio/mpeg,audio/wav,audio/ogg,.mp3,.wav,.ogg" className="hidden" onChange={e=>{if(e.target.files?.[0])load(e.target.files[0]);e.target.value='';}}/></>;}

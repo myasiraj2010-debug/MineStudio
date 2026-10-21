@@ -1,0 +1,8 @@
+import { Box, Flame, Sword, Ship, Pickaxe, CloudRain, Snowflake, Cloud, Droplets, Sparkles, Shield } from 'lucide-react';
+import type { Asset } from '@/types/studio';
+interface Props { asset:Asset; }
+export default function AssetThumbnail({asset}:Props){
+ const icons={sword:Sword,pickaxe:Pickaxe,shield:Shield,boat:Ship,cart:Box,fire:Flame,rain:CloudRain,snow:Snowflake,smoke:Cloud,explosion:Sparkles,water:Droplets};
+ const Icon=icons[asset.emoji as keyof typeof icons];
+ return <div className="relative h-20 flex items-center justify-center overflow-hidden rounded-md bg-background/70">{Icon?<Icon size={38} style={{color:asset.color}} strokeWidth={1.5}/>:asset.kind==='block'?<svg width="64" height="64" viewBox="0 0 64 64"><path d="M32 8 56 21 32 34 8 21Z" fill={asset.color}/><path d="M8 21 32 34V59L8 45Z" fill={asset.color} style={{filter:'brightness(.65)'}}/><path d="M32 34 56 21V45L32 59Z" fill={asset.color} style={{filter:'brightness(.85)'}}/><path d="m14 28 6 3m18 9 7-4m-26 2 7 4m12 8 7-4" stroke="currentColor" opacity=".2"/></svg>:<svg width="58" height="72" viewBox="0 0 58 72"><path d="M20 5h20v20H20z" fill={asset.name==='Steve'?'#b88e72':asset.name==='Alex'?'#e6b894':asset.color}/><path d="M20 5h20v7H20z" fill={asset.name==='Steve'?'#4f352a':asset.name==='Alex'?'#ab642e':asset.color} style={{filter:'brightness(.7)'}}/><path d="M20 26h20v25H20zM10 26h9v25h-9zM41 26h9v25h-9z" fill={asset.color}/><path d="M20 51h9v19h-9zM31 51h9v19h-9z" fill={asset.kind==='character'?'#48568d':asset.color} style={{filter:'brightness(.85)'}}/><path d="M24 15h4v4h-4zM33 15h4v4h-4z" fill={asset.name==='Creeper'?'#182515':'#ede8df'}/><path d="M28 21h5v3h-5z" fill="#45372d"/>{asset.name==='Creeper'&&<path d="M27 20h6v6h-6z" fill="#182515"/>}</svg>}</div>;
+}

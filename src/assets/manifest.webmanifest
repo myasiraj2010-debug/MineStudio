@@ -1,0 +1,1 @@
+{"name":"MINE STUDIO","short_name":"MINE STUDIO","description":"A landscape-first Minecraft animation studio.","start_url":"/","scope":"/","display":"standalone","orientation":"landscape","background_color":"#121517","theme_color":"#121517","icons":[{"src":"/src/assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}

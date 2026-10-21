@@ -1,0 +1,2 @@
+import { Link } from 'react-router-dom';
+export default function NotFound(){return <main className="min-h-screen flex flex-col items-center justify-center gap-4"><span className="text-primary text-sm font-mono">404 / UNLOADED CHUNK</span><h1 className="font-display text-3xl">This scene doesn’t exist</h1><p className="text-muted-foreground">Head back to your animation workspace.</p><Link to="/" className="primary-button mt-4">Return to MINE STUDIO</Link></main>;}
